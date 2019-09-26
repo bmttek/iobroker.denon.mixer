@@ -1,0 +1,41 @@
+{
+    "common": {
+        "name": "denon-mixer",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release"
+            }
+        },
+        "title": "Denon Matrix",
+        "desc": {
+            "en": "This adaptor adds Denon Audio Matrix"
+        },
+        "authors": [
+            "Marcin Truty <bmttek@hotmail.com>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Denon",
+            "Mixer"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "template.png",
+        "messagebox": true,
+        "subscribe": "messagebox",
+        "enabled": true,
+        "readme": "https://github.com/bmttek/iobroker.denon.mixer/blob/master/README.md",
+        "loglevel": "debug",
+        "mode": "daemon",
+        "type": "multimedia",
+        "compact": true
+    },
+    "native": {
+        "hotname": "127.0.0.1",
+        "port": "80"
+    },
+    "objects": []
+}

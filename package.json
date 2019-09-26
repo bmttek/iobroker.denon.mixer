@@ -1,0 +1,42 @@
+{
+  "name": "iobroker.denon-mixer",
+  "version": "0.0.1",
+  "description": "This adaptor adds Ded Audio Matrix",
+  "author": {
+    "name": "Marcin Truty",
+    "email": "bmttek@hotmail.com"
+  },
+  "homepage": "https://github.com/bmttek/iobroker.denon.mixer",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "template",
+    "Denon",
+    "Mixer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmttek/iobroker.denon.mixer"
+  },
+  "dependencies": {
+    "@iobroker/adapter-core": "^1.0.3",
+    "telnet-client": "^1.0.5"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-replace": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-jscs": "^3.0.1",
+    "grunt-http": "^2.2.0",
+    "mocha": "^4.1.0",
+    "chai": "^4.1.2"
+  },
+  "main": "main.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --exit"
+  },
+  "bugs": {
+    "url": "https://github.com/bmttek/iobroker.denon.mixer/issues"
+  },
+  "readmeFilename": "README.md"
+}

@@ -1,0 +1,150 @@
+<html>
+
+<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+<script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+<script type="text/javascript" src="words.js"></script>
+
+<!-- you have to define 2 functions in the global scope: -->
+<script type="text/javascript">
+    // the function loadSettings has to exist ...
+    function load(settings, onChange) {
+        // example: select elements with id=key and class=value and insert value
+       if (!settings) return;
+        $('.value').each(function () {
+            var $key = $(this);
+            var id = $key.attr('id');
+            if ($key.attr('type') === 'checkbox') {
+		// do not call onChange direct, because onChange could expect some arguments
+                $key.prop('checked', settings[id]).change(function() {
+                    onChange();
+                });
+            } else {
+		// do not call onChange direct, because onChange could expect some arguments
+                $key.val(settings[id]).change(function() {
+                    onChange();
+                }).keyup(function() {
+                    onChange();
+                });
+            }
+        });
+        onChange(false);
+    }
+    // ... and the function save has to exist.
+    // you have to make sure the callback is called with the settings object as first param!
+    function save(callback) {
+        // example: select elements with class=value and build settings object
+        var obj = {};
+        $('.value').each(function () {
+            var $this = $(this);
+			if ($this.attr('type') === 'checkbox') {
+				obj[$this.attr('id')] = $this.prop('checked');
+			} else {
+				obj[$this.attr('id')] = $this.val();
+			}
+        });
+        callback(obj);
+    }
+</script>
+
+
+    <style>
+        h1 {
+            font-size: 11px;
+            color: #505050;
+            font-weight: bold;
+            width: 100%;
+            padding-left:6px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: #e0e0e0;
+        }
+        h2 {
+            font-size: 14px;
+            #color: #505050;
+            color: #202060;
+            font-weight: bold;
+            width: 100%;
+            padding-left:6px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: #e0e0e0;
+        }
+        .msgTable{
+            width:100%;
+            border-collapse:collapse;
+        }
+        .msgTable td{
+            padding:7px; border:#4e95f4 1px solid;
+        }
+        .msgTable tr{
+            background: #b8d1f3;
+        }
+        .hoverTable{
+            width:100%;
+            border-collapse:collapse;
+        }
+        .hoverTable td{
+            padding:7px; border:#4e95f4 1px solid; cursor: hand;
+        }
+        .hoverTable th{
+            padding:7px; border:#4e95f4 1px solid; background-color: #b8d1f3;
+        }
+        .hoverTable th:hover{
+            padding:7px; border:#4e95f4 1px solid; background-color: #b8d1f3;
+        }
+        .hoverTable tr{
+            background: #b8d1f3;
+        }
+        .hoverTable tr:hover {
+            background-color: #ffff99;
+        }
+        td {
+            font-size: 13px;
+            padding-left:1px;
+            padding-right: 4px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+        input {
+            font-size: 13px;
+          }
+    </style>
+<!-- you have to put your config page in a div with id adapter-container -->
+    <table><tr>
+        <td><h3 class="translate">Denon adapter settings</h3></td>
+      </tr>
+    </table>
+
+		<h1 class="translate">Projector</h1>
+		<table style="width: 100%; white-space: nowrap;">
+		<tr>
+				<td style="height: 10px" class="translate">IP Address</td><td width=2></td><td><input type="text" id="hostname" class="value"></td><td width=100%></td>
+		</tr>
+		<tr>
+				<td style="height: 10px" class="translate">TCP Port</td><td width=2></td><td><input type="text" id="port" class="value"></td><td width=100%></td>
+		</tr>
+		<tr>
+				<td style="height: 10px" class="translate">Password</td><td width=2></td><td><input type="text" id="password" class="value"></td><td width=100%></td>
+		</tr>
+		</table>
+
+		<h1 class="translate">Adapter</h1>
+		<table style="width: 100%; white-space: nowrap;">
+		<tr>
+				<td style="height: 10px" class="translate">Poll Interval</td><td width=1></td><td><input type="text" id="polltime" class="value"></td><td width=100%></td>
+		</tr>
+		</table>
+
+    <p class="translate">Note: On save, adapter restarts with new config immediately!</p>
+
+
+
+</html>
