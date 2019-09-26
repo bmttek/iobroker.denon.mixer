@@ -28,7 +28,7 @@
         "subscribe": "messagebox",
         "enabled": true,
         "readme": "https://github.com/bmttek/iobroker.denon.mixer/blob/master/README.md",
-        "loglevel": "debug",
+        "loglevel": "info",
         "mode": "daemon",
         "type": "multimedia",
         "compact": true
